@@ -27,6 +27,7 @@ std::string join(int size, int v[])
   {
     response += std::to_string(v[i]) + ", ";
   }
+  response = response.substr(0, response.length() - 2);
   return response;
 }
 
