@@ -1,6 +1,8 @@
 #include <iostream>
 #include <unordered_map>
 
+#include "utils.h"
+
 using std::cout;
 using std::endl;
 using std::unordered_map;
@@ -46,12 +48,15 @@ int maxRecursive(int n, int arr[], unordered_map<int, int> &cache)
 
 int main()
 {
-  int arr[] = {1, 2, 3, 7, 5, 4, 3, 8, 4};
+  int s = 9;
+  int *arr = randomArray(s);
 
-  cout << "Iterative " << max(9, arr) << endl;
+  cout << "Current Array: " << join(s, arr) << endl;
+
+  cout << "Iterative: " << max(s, arr) << endl;
 
   unordered_map<int, int> cache;
-  cout << "Recursive " << maxRecursive(9, arr, cache) << endl;
+  cout << "Recursive: " << maxRecursive(s, arr, cache) << endl;
 
   return 0;
 }
