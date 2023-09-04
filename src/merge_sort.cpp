@@ -5,13 +5,68 @@
 using namespace std;
 
 /**
- * Merge Sort
+ * Merge Sort without Sentinel value
  * first: initial index
  * middle: middle index
  * last: final index
  */
 
 void merge(int arr[], int first, int middle, int last)
+{
+  int size1 = middle - first + 1; // This is the size of sub array 1
+  int size2 = last - middle;      // This is the size of sub array 2
+
+  // Creating the sub arrays and copying the values from the original array
+  int left[size1 + 1] = {};
+  int right[size2 + 1] = {};
+  for (int i = 0; i < size1; i++)
+  {
+    left[i] = arr[first + i];
+  }
+  for (int j = 0; j < size2; j++)
+  {
+    right[j] = arr[middle + j + 1];
+  }
+
+  int i = 0;
+  int j = 0;
+  for (int k = first; k <= last; k++)
+  {
+
+    if (i == size1)
+    {
+      arr[k] = right[j];
+      j++;
+      continue;
+    }
+
+    if (j == size2)
+    {
+      arr[k] = left[i];
+      i++;
+      continue;
+    }
+
+    if (left[i] <= right[j])
+    {
+      arr[k] = left[i];
+      i++;
+    }
+    else
+    {
+      arr[k] = right[j];
+      j++;
+    }
+  }
+}
+
+/**
+ * Merge Sort with Sentinel value to avoid checking if the sub arrays are empty
+ * first: initial index
+ * middle: middle index
+ * last: final index
+ */
+void mergeWithSentinel(int arr[], int first, int middle, int last)
 {
   int size1 = middle - first + 1; // This is the size of sub array 1
   int size2 = last - middle;      // This is the size of sub array 2
@@ -67,7 +122,7 @@ int *mergeSort(int arr[], int first, int last)
 
 int main()
 {
-  const int s = 8;
+  const int s = 7;
   int *v = randomArray(s);
   cout << "Vetor Original: " << join(s, v) << endl;
 
