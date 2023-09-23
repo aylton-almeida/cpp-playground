@@ -1,6 +1,7 @@
 #ifndef UTILS_H
 #define UTILS_H
 
+#include <tuple>
 #include <iostream>
 #include <string>
 #include <ctime>
@@ -29,6 +30,16 @@ std::string join(int size, int v[])
   }
   response = response.substr(0, response.length() - 2);
   return response;
+}
+
+std::string tupleToString(std::tuple<int, int> t)
+{
+  return "(" + std::to_string(std::get<0>(t)) + ", " + std::to_string(std::get<1>(t)) + ")";
+}
+
+std::string pairToString(std::pair<int, int> p)
+{
+  return "(" + std::to_string(p.first) + ", " + std::to_string(p.second) + ")";
 }
 
 #endif
