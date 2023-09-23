@@ -6,6 +6,7 @@
 #include <string>
 #include <ctime>
 #include <cstdlib>
+#include <vector>
 
 int *randomArray(int size)
 {
@@ -40,6 +41,22 @@ std::string tupleToString(std::tuple<int, int> t)
 std::string pairToString(std::pair<int, int> p)
 {
   return "(" + std::to_string(p.first) + ", " + std::to_string(p.second) + ")";
+}
+
+/**
+ * Prints a graph represented as an adjacency list
+ */
+void printGraph(const std::vector<std::vector<int>> &graph)
+{
+  for (int vertex = 1; vertex <= graph.size(); vertex++)
+  {
+    std::cout << vertex << ": ";
+    for (const auto &edge : graph[vertex - 1])
+    {
+      std::cout << edge << " ";
+    }
+    std::cout << std::endl;
+  }
 }
 
 #endif
